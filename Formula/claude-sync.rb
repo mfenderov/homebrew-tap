@@ -5,21 +5,21 @@
 class ClaudeSync < Formula
   desc "Beautiful CLI tool for syncing Claude Code configurations"
   homepage "https://github.com/mfenderov/claude-sync"
-  version "0.1.0"
+  version "0.2.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/mfenderov/claude-sync/releases/download/v0.1.0/claude-sync_0.1.0_darwin_amd64.tar.gz"
-      sha256 "01837a7a53e250c6358112529ea69e6e68d780678507a26493557df4c7247694"
+      url "https://github.com/mfenderov/claude-sync/releases/download/v0.2.0/claude-sync_0.2.0_darwin_amd64.tar.gz"
+      sha256 "92c4668ce1041acd29b4eaa462742c3ad7016e8ec2a871aa9296aba89dad6bb9"
 
       def install
         bin.install "claude-sync"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/mfenderov/claude-sync/releases/download/v0.1.0/claude-sync_0.1.0_darwin_arm64.tar.gz"
-      sha256 "3d52a91b6cf139cde4bee4d26c66054f1ecc97ae84cf30169c971997cc8b64d5"
+      url "https://github.com/mfenderov/claude-sync/releases/download/v0.2.0/claude-sync_0.2.0_darwin_arm64.tar.gz"
+      sha256 "796e2ea5f7b21bde7ec9d88672ac684be412418d6169efca6ab5fcb34b2591de"
 
       def install
         bin.install "claude-sync"
@@ -29,15 +29,15 @@ class ClaudeSync < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mfenderov/claude-sync/releases/download/v0.1.0/claude-sync_0.1.0_linux_amd64.tar.gz"
-      sha256 "538da6c2a561607ca25437c573afc283d43fd3045192a5b9f3a38477ad2bf196"
+      url "https://github.com/mfenderov/claude-sync/releases/download/v0.2.0/claude-sync_0.2.0_linux_amd64.tar.gz"
+      sha256 "b5fec909ae448024b5e59e5caf8ef2921d8888047e4229eef67f554efc482ad8"
       def install
         bin.install "claude-sync"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mfenderov/claude-sync/releases/download/v0.1.0/claude-sync_0.1.0_linux_arm64.tar.gz"
-      sha256 "207f906710b765648ca90efb65d05a682e464ce95235b8e6bb9966873d517ce2"
+      url "https://github.com/mfenderov/claude-sync/releases/download/v0.2.0/claude-sync_0.2.0_linux_arm64.tar.gz"
+      sha256 "dd226983fa5f914a10e339189a5dbd3b70ebad65139be5ed59123790943cc4d7"
       def install
         bin.install "claude-sync"
       end
