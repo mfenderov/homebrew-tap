@@ -4,28 +4,28 @@
 class ClaudeMemory < Formula
   desc "Local, privacy-first RAG memory system for Claude Code"
   homepage "https://github.com/mfenderov/claude-memory"
-  version "1.0.2"
+  version "1.0.3"
   license "MIT"
 
   on_macos do
     on_intel do
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.2/claude-memory_1.0.2_darwin_amd64.tar.gz"
-      sha256 "7f478d18d887684c899aa53b3a6875a1ce978fc037329d287a5909550fcc77ba"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.3/claude-memory_1.0.3_darwin_amd64.tar.gz"
+      sha256 "121a615aa9b73d6ce62c594e165a9186ee75eafb8d0e905512c29bf7aeb0d9fc"
     end
     on_arm do
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.2/claude-memory_1.0.2_darwin_arm64.tar.gz"
-      sha256 "a0f3addfbeedefa1b2b291cc7b4ec8ba1fad9228bd561c35f0a22dfd9634e5b2"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.3/claude-memory_1.0.3_darwin_arm64.tar.gz"
+      sha256 "2d65104204d27bd4eccf20ca66cdb37c5b685ae802ea4d40dd8a0892d8d6a74a"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.2/claude-memory_1.0.2_linux_amd64.tar.gz"
-      sha256 "4096d211509416f75016970dfca4046a69cba8aea6e663e4894fd60049752e26"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.3/claude-memory_1.0.3_linux_amd64.tar.gz"
+      sha256 "9904d9d7ddecb5ac0ff2f387322aac6ecca3343cb071deca51cf35c6e42ecd3a"
     end
     on_arm do
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.2/claude-memory_1.0.2_linux_arm64.tar.gz"
-      sha256 "9e07010d85fc7904d920e4aec7b9f0e98e40550c44ee958744d81d350715a169"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.3/claude-memory_1.0.3_linux_arm64.tar.gz"
+      sha256 "84888fa5f90c9532c28db2c171360a5d69d42b8d22d3cc54d0cb20f8a20b875a"
     end
   end
 
@@ -46,21 +46,24 @@ class ClaudeMemory < Formula
   def post_install
     # Create Claude Code plugin directory structure
     plugin_dir = Pathname.new(Dir.home) / ".claude" / "plugins" / "local" / "claude-memory"
+
+    # Clean up existing installation (handles upgrades)
+    plugin_dir.rmtree if plugin_dir.exist?
     plugin_dir.mkpath
     (plugin_dir / "bin").mkpath
 
     # Symlink plugin files from share directory
-    ln_sf share/"claude-memory"/".claude-plugin", plugin_dir/".claude-plugin"
-    ln_sf share/"claude-memory"/"agents", plugin_dir/"agents"
-    ln_sf share/"claude-memory"/"skills", plugin_dir/"skills"
-    ln_sf share/"claude-memory"/"commands", plugin_dir/"commands"
-    ln_sf share/"claude-memory"/"hooks", plugin_dir/"hooks"
-    ln_sf share/"claude-memory"/"hooks.json", plugin_dir/"hooks.json"
-    ln_sf share/"claude-memory"/".mcp.json", plugin_dir/".mcp.json"
+    ln_s share/"claude-memory"/".claude-plugin", plugin_dir/".claude-plugin"
+    ln_s share/"claude-memory"/"agents", plugin_dir/"agents"
+    ln_s share/"claude-memory"/"skills", plugin_dir/"skills"
+    ln_s share/"claude-memory"/"commands", plugin_dir/"commands"
+    ln_s share/"claude-memory"/"hooks", plugin_dir/"hooks"
+    ln_s share/"claude-memory"/"hooks.json", plugin_dir/"hooks.json"
+    ln_s share/"claude-memory"/".mcp.json", plugin_dir/".mcp.json"
 
     # Symlink binaries
-    ln_sf bin/"claude-memory", plugin_dir/"bin"/"claude-memory"
-    ln_sf bin/"claude-memory-server", plugin_dir/"bin"/"claude-memory-server"
+    ln_s bin/"claude-memory", plugin_dir/"bin"/"claude-memory"
+    ln_s bin/"claude-memory-server", plugin_dir/"bin"/"claude-memory-server"
 
     # Ensure memory database directory exists (but NEVER touch the database itself)
     memory_dir = Pathname.new(Dir.home) / ".claude"
