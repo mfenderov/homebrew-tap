@@ -4,28 +4,28 @@
 class ClaudeMemory < Formula
   desc "Local, privacy-first RAG memory system for Claude Code"
   homepage "https://github.com/mfenderov/claude-memory"
-  version "1.0.3"
+  version "1.0.4"
   license "MIT"
 
   on_macos do
     on_intel do
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.3/claude-memory_1.0.3_darwin_amd64.tar.gz"
-      sha256 "121a615aa9b73d6ce62c594e165a9186ee75eafb8d0e905512c29bf7aeb0d9fc"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.4/claude-memory_1.0.4_darwin_amd64.tar.gz"
+      sha256 "44e05add9e139998471568ac36adb8ae767a42350e405ace6bf3bacb3f25d9c3"
     end
     on_arm do
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.3/claude-memory_1.0.3_darwin_arm64.tar.gz"
-      sha256 "2d65104204d27bd4eccf20ca66cdb37c5b685ae802ea4d40dd8a0892d8d6a74a"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.4/claude-memory_1.0.4_darwin_arm64.tar.gz"
+      sha256 "0505f7a817a142d1e96027943425b153cb5ffc77a57aab63b7301334a78b409d"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.3/claude-memory_1.0.3_linux_amd64.tar.gz"
-      sha256 "9904d9d7ddecb5ac0ff2f387322aac6ecca3343cb071deca51cf35c6e42ecd3a"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.4/claude-memory_1.0.4_linux_amd64.tar.gz"
+      sha256 "a90899f39385baafe191f2d12c38d66cb02b1c588116f12dd69fed9855de626c"
     end
     on_arm do
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.3/claude-memory_1.0.3_linux_arm64.tar.gz"
-      sha256 "84888fa5f90c9532c28db2c171360a5d69d42b8d22d3cc54d0cb20f8a20b875a"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.4/claude-memory_1.0.4_linux_arm64.tar.gz"
+      sha256 "6524ab44933a3f1a0a737399eb5a6b4c2859f00e1a783f64123ee151c942d1af"
     end
   end
 
@@ -40,7 +40,6 @@ class ClaudeMemory < Formula
     (share/"claude-memory").install "commands"
     (share/"claude-memory").install "hooks"
     (share/"claude-memory").install "hooks.json"
-    (share/"claude-memory").install ".mcp.json"
   end
 
   def post_install
@@ -59,7 +58,6 @@ class ClaudeMemory < Formula
     ln_s share/"claude-memory"/"commands", plugin_dir/"commands"
     ln_s share/"claude-memory"/"hooks", plugin_dir/"hooks"
     ln_s share/"claude-memory"/"hooks.json", plugin_dir/"hooks.json"
-    ln_s share/"claude-memory"/".mcp.json", plugin_dir/".mcp.json"
 
     # Symlink binaries
     ln_s bin/"claude-memory", plugin_dir/"bin"/"claude-memory"
@@ -68,6 +66,10 @@ class ClaudeMemory < Formula
     # Ensure memory database directory exists (but NEVER touch the database itself)
     memory_dir = Pathname.new(Dir.home) / ".claude"
     memory_dir.mkpath
+
+    # Try to register MCP server (may fail in Homebrew sandbox - see caveats)
+    server_path = plugin_dir / "bin" / "claude-memory-server"
+    system "claude", "mcp", "add", "mark42", "--scope", "user", "--transport", "stdio", "--", server_path.to_s
   end
 
   def caveats
@@ -87,10 +89,18 @@ class ClaudeMemory < Formula
 
       Plugin location: ~/.claude/plugins/local/claude-memory/
 
-      To activate:
-        1. Restart Claude Code
-        2. The MCP server "mark42" will start automatically
-        3. Hooks will fire on SessionStart, PostToolUse, Stop
+      ══════════════════════════════════════════════════════════════
+      IMPORTANT: Register the MCP server (one-time setup)
+      ══════════════════════════════════════════════════════════════
+
+      Run this command to enable the "mark42" memory server:
+
+        claude mcp add mark42 --scope user --transport stdio -- \\
+          ~/.claude/plugins/local/claude-memory/bin/claude-memory-server
+
+      Then restart Claude Code. The hooks will fire automatically.
+
+      ══════════════════════════════════════════════════════════════
 
       Available commands: /init, /status, /sync, /calibrate
 
