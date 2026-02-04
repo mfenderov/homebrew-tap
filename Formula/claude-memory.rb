@@ -4,28 +4,28 @@
 class ClaudeMemory < Formula
   desc "Local, privacy-first RAG memory system for Claude Code"
   homepage "https://github.com/mfenderov/claude-memory"
-  version "1.0.1"
+  version "1.0.2"
   license "MIT"
 
   on_macos do
     on_intel do
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.1/claude-memory_1.0.1_darwin_amd64.tar.gz"
-      sha256 "8797ebdf565fc8d0d75f2cf37dfc5925cf6841e0e108db1aa6fa4de69e0c84a1"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.2/claude-memory_1.0.2_darwin_amd64.tar.gz"
+      sha256 "7f478d18d887684c899aa53b3a6875a1ce978fc037329d287a5909550fcc77ba"
     end
     on_arm do
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.1/claude-memory_1.0.1_darwin_arm64.tar.gz"
-      sha256 "b5823f2e5dbc38fd9d03c7ef9c8677c2e7f1a2a479f8276d641920bc251afd73"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.2/claude-memory_1.0.2_darwin_arm64.tar.gz"
+      sha256 "a0f3addfbeedefa1b2b291cc7b4ec8ba1fad9228bd561c35f0a22dfd9634e5b2"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.1/claude-memory_1.0.1_linux_amd64.tar.gz"
-      sha256 "20ecd3dbcdd7711ca77bd61854ae62ec16389ba4c45d0140daa4f766ff07c57e"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.2/claude-memory_1.0.2_linux_amd64.tar.gz"
+      sha256 "4096d211509416f75016970dfca4046a69cba8aea6e663e4894fd60049752e26"
     end
     on_arm do
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.1/claude-memory_1.0.1_linux_arm64.tar.gz"
-      sha256 "e798e1e3e9a254ef8049171d4231630f94449d507e5fb4fedc770ac14a379f19"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.0.2/claude-memory_1.0.2_linux_arm64.tar.gz"
+      sha256 "9e07010d85fc7904d920e4aec7b9f0e98e40550c44ee958744d81d350715a169"
     end
   end
 
