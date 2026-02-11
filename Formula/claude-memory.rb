@@ -5,13 +5,13 @@
 class ClaudeMemory < Formula
   desc "Local, privacy-first RAG memory system for Claude Code"
   homepage "https://github.com/mfenderov/claude-memory"
-  version "1.1.0"
+  version "1.1.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.1.0/claude-memory_1.1.0_darwin_amd64.tar.gz"
-      sha256 "28d2b5c24f6a70678e8298c2b79f7b8ad7923c3315a2ae2237209dcae7d798f3"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.1.1/claude-memory_1.1.1_darwin_amd64.tar.gz"
+      sha256 "b7add66a32d329b15165f5b899325821ea6189c32e890744b7364fffc5b1bb6f"
 
       def install
         bin.install "claude-memory"
@@ -27,8 +27,8 @@ class ClaudeMemory < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.1.0/claude-memory_1.1.0_darwin_arm64.tar.gz"
-      sha256 "9209f504e4d7c7e0018397af7b612af4e1dd17e79f312a1841df72d1d85c1247"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.1.1/claude-memory_1.1.1_darwin_arm64.tar.gz"
+      sha256 "ae66eb929dde7c936302e484104ddc63dd57c1f6e463acd28c80837b2c026f5f"
 
       def install
         bin.install "claude-memory"
@@ -47,8 +47,8 @@ class ClaudeMemory < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.1.0/claude-memory_1.1.0_linux_amd64.tar.gz"
-      sha256 "8805e01da29dc3c0d9c76b6219ba2d2f1b80aebd8d7fa93266f62ef7d1433ecc"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.1.1/claude-memory_1.1.1_linux_amd64.tar.gz"
+      sha256 "89e1f1199ad22b2bca3881626ab7f50190f76d0858f67b3bc0bc12240dad4bf1"
       def install
         bin.install "claude-memory"
         bin.install "claude-memory-server"
@@ -63,8 +63,8 @@ class ClaudeMemory < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mfenderov/claude-memory/releases/download/v1.1.0/claude-memory_1.1.0_linux_arm64.tar.gz"
-      sha256 "b6f3a45f19620aa1b5fcb96b1504df40654323570b41d5e841b5042c59d0f97e"
+      url "https://github.com/mfenderov/claude-memory/releases/download/v1.1.1/claude-memory_1.1.1_linux_arm64.tar.gz"
+      sha256 "0c78bd0b3c96e0aafd1a43d116165b0010fa12cd21ccd03a00e0d3c33b298d22"
       def install
         bin.install "claude-memory"
         bin.install "claude-memory-server"
@@ -97,9 +97,9 @@ class ClaudeMemory < Formula
     ln_s share/"claude-memory"/"hooks", plugin_dir/"hooks"
     ln_s share/"claude-memory"/"hooks.json", plugin_dir/"hooks.json"
 
-    # Symlink binaries
-    ln_s bin/"claude-memory", plugin_dir/"bin"/"claude-memory"
-    ln_s bin/"claude-memory-server", plugin_dir/"bin"/"claude-memory-server"
+    # Symlink binaries (use opt_bin for stable path across upgrades)
+    ln_s opt_bin/"claude-memory", plugin_dir/"bin"/"claude-memory"
+    ln_s opt_bin/"claude-memory-server", plugin_dir/"bin"/"claude-memory-server"
 
     # Ensure memory database directory exists (but NEVER touch the database itself)
     memory_dir = Pathname.new(Dir.home) / ".claude"
