@@ -11,7 +11,7 @@ class Mark42 < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/mfenderov/mark42/releases/download/v2.2.0/mark42_2.2.0_darwin_amd64.tar.gz"
-      sha256 "913d3d63b3302c57cb1fb94f32499ad4fc9bcbc1b897f840e19a7d5fe3326c6c"
+      sha256 "ba235e96af6447027f7af21ba37714d61a2d06c718a5938b9a3ffb305b9872a9"
 
       define_method(:install) do
         bin.install "mark42"
@@ -27,7 +27,7 @@ class Mark42 < Formula
     end
     if Hardware::CPU.arm?
       url "https://github.com/mfenderov/mark42/releases/download/v2.2.0/mark42_2.2.0_darwin_arm64.tar.gz"
-      sha256 "d491ef7d89151034691293e0466c7e056da5870aadf9999a3eca4bbe13e0ca0c"
+      sha256 "ca93808002ca104d480b5d01a5f13f75a0e3550404e210fad1fd187dfbe396b0"
 
       define_method(:install) do
         bin.install "mark42"
@@ -46,7 +46,7 @@ class Mark42 < Formula
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/mfenderov/mark42/releases/download/v2.2.0/mark42_2.2.0_linux_amd64.tar.gz"
-      sha256 "1438c9eb2934aa9affb48d0ec9c8ff46c59488d66bf1ec4ff97822f90965f2ce"
+      sha256 "28cb314170acc6c66a9af3db59b511b85ce0db3921c63dfcced571e8dbbbb60d"
       define_method(:install) do
         bin.install "mark42"
         bin.install "mark42-server"
@@ -61,7 +61,7 @@ class Mark42 < Formula
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/mfenderov/mark42/releases/download/v2.2.0/mark42_2.2.0_linux_arm64.tar.gz"
-      sha256 "60c2b461a12cc075021f536d927238ac9d7ef5b58ca27ed84088735a3f9a40f6"
+      sha256 "f8c92569f6cdc894425476c3e47bd785e716d611c264edb24887df8947a99b4a"
       define_method(:install) do
         bin.install "mark42"
         bin.install "mark42-server"
