@@ -5,15 +5,15 @@
 class Mark42 < Formula
   desc "Local, privacy-first RAG memory system for Claude Code"
   homepage "https://github.com/mfenderov/mark42"
-  version "2.0.0"
+  version "2.2.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/mfenderov/mark42/releases/download/v2.0.0/mark42_2.0.0_darwin_amd64.tar.gz"
-      sha256 "f93e4fdb4cbd50b3955a485d4da477eceb485ce398643a93ead5a080116442ab"
+      url "https://github.com/mfenderov/mark42/releases/download/v2.2.0/mark42_2.2.0_darwin_amd64.tar.gz"
+      sha256 "9e8202d0d061b35aa476b5f0d8635ac73658d6184ebf8a29e3e636c020aa6b2c"
 
-      def install
+      define_method(:install) do
         bin.install "mark42"
         bin.install "mark42-server"
 
@@ -23,14 +23,13 @@ class Mark42 < Formula
         (share/"mark42").install "skills"
         (share/"mark42").install "commands"
         (share/"mark42").install "hooks"
-        (share/"mark42").install "hooks.json"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/mfenderov/mark42/releases/download/v2.0.0/mark42_2.0.0_darwin_arm64.tar.gz"
-      sha256 "6704e6490fc7d9148484882439af1949efad5ea9f17b29b09a62b67ac5dff1be"
+      url "https://github.com/mfenderov/mark42/releases/download/v2.2.0/mark42_2.2.0_darwin_arm64.tar.gz"
+      sha256 "346bda601136b7444fbf5652b1d3d4583cf4490e7d4ea977ccb1b99df4739270"
 
-      def install
+      define_method(:install) do
         bin.install "mark42"
         bin.install "mark42-server"
 
@@ -40,16 +39,15 @@ class Mark42 < Formula
         (share/"mark42").install "skills"
         (share/"mark42").install "commands"
         (share/"mark42").install "hooks"
-        (share/"mark42").install "hooks.json"
       end
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mfenderov/mark42/releases/download/v2.0.0/mark42_2.0.0_linux_amd64.tar.gz"
-      sha256 "0d3c95172b013feb767b22d9b59ce33e4eb6ea6b19123ec003f6354d570a7c5a"
-      def install
+      url "https://github.com/mfenderov/mark42/releases/download/v2.2.0/mark42_2.2.0_linux_amd64.tar.gz"
+      sha256 "6160744e18195ddaf1d3ae94f06331beee10f109c99272430a1470ff4f545be2"
+      define_method(:install) do
         bin.install "mark42"
         bin.install "mark42-server"
 
@@ -59,13 +57,12 @@ class Mark42 < Formula
         (share/"mark42").install "skills"
         (share/"mark42").install "commands"
         (share/"mark42").install "hooks"
-        (share/"mark42").install "hooks.json"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mfenderov/mark42/releases/download/v2.0.0/mark42_2.0.0_linux_arm64.tar.gz"
-      sha256 "ec377d1a724f6433373a42bdf97e3e35b9a8eb93cccf7e3d12a8dc2c8df67e2b"
-      def install
+      url "https://github.com/mfenderov/mark42/releases/download/v2.2.0/mark42_2.2.0_linux_arm64.tar.gz"
+      sha256 "157b5d1a456c3e816304ca4b5500ff52258f7e05938771da595a1d0de7872c4d"
+      define_method(:install) do
         bin.install "mark42"
         bin.install "mark42-server"
 
@@ -75,7 +72,6 @@ class Mark42 < Formula
         (share/"mark42").install "skills"
         (share/"mark42").install "commands"
         (share/"mark42").install "hooks"
-        (share/"mark42").install "hooks.json"
       end
     end
   end
@@ -95,7 +91,6 @@ class Mark42 < Formula
     ln_s share/"mark42"/"skills", plugin_dir/"skills"
     ln_s share/"mark42"/"commands", plugin_dir/"commands"
     ln_s share/"mark42"/"hooks", plugin_dir/"hooks"
-    ln_s share/"mark42"/"hooks.json", plugin_dir/"hooks.json"
 
     # Symlink binaries (use opt_bin for stable path across upgrades)
     ln_s opt_bin/"mark42", plugin_dir/"bin"/"mark42"
