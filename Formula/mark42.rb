@@ -5,13 +5,13 @@
 class Mark42 < Formula
   desc "Local, privacy-first RAG memory system for Claude Code"
   homepage "https://github.com/mfenderov/mark42"
-  version "3.0.0"
+  version "3.0.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/mfenderov/mark42/releases/download/v3.0.0/mark42_3.0.0_darwin_amd64.tar.gz"
-      sha256 "b3034f24754abe38cfb65e0791d344414887f8b25defa2db573e0a2771c3d4cb"
+      url "https://github.com/mfenderov/mark42/releases/download/v3.0.1/mark42_3.0.1_darwin_amd64.tar.gz"
+      sha256 "75915eb8eeb8adbf5fea8815b497aca5bbf17ae565692b7fc50a0130f4cc45ec"
 
       define_method(:install) do
         bin.install "mark42"
@@ -26,8 +26,8 @@ class Mark42 < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/mfenderov/mark42/releases/download/v3.0.0/mark42_3.0.0_darwin_arm64.tar.gz"
-      sha256 "1fc4f52091ee4ce7372c81f9e67d0958891b60715ab086fc609a41f1b63bd201"
+      url "https://github.com/mfenderov/mark42/releases/download/v3.0.1/mark42_3.0.1_darwin_arm64.tar.gz"
+      sha256 "6d1799f2d9a8a62fa3c0a46c8b76756aaa67295ee06488dbaf3f23e5587db75d"
 
       define_method(:install) do
         bin.install "mark42"
@@ -45,8 +45,8 @@ class Mark42 < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mfenderov/mark42/releases/download/v3.0.0/mark42_3.0.0_linux_amd64.tar.gz"
-      sha256 "99510705d99d351942ba8cae0549f3789a7dd5a33555e55effbe5f8cace70d99"
+      url "https://github.com/mfenderov/mark42/releases/download/v3.0.1/mark42_3.0.1_linux_amd64.tar.gz"
+      sha256 "45efb0a0dcd1b8367aab57460a1aa6f607d2ac2c80137ba23aa658dbf7d725e4"
       define_method(:install) do
         bin.install "mark42"
         bin.install "mark42-server"
@@ -60,8 +60,8 @@ class Mark42 < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mfenderov/mark42/releases/download/v3.0.0/mark42_3.0.0_linux_arm64.tar.gz"
-      sha256 "c7c9a7cd77718176d19fac78d455b62d976ede97159fcaa60693c42334673306"
+      url "https://github.com/mfenderov/mark42/releases/download/v3.0.1/mark42_3.0.1_linux_arm64.tar.gz"
+      sha256 "e8639cac88dd44daa74e150b7ec8ef81fd32b8a953008e93ae01954e0394f723"
       define_method(:install) do
         bin.install "mark42"
         bin.install "mark42-server"
