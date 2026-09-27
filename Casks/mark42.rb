@@ -7,25 +7,25 @@ cask "mark42" do
     end
   end
 
-  version "3.5.1"
+  version "4.0.0"
 
   on_macos do
     on_arm do
-      sha256 "f86f8c43112e095ca439fad2cda7fcdf0dccd522645e82039e4b309ada5ba69c"
+      sha256 "aac028db2195b65348a5a8f75104ddf6e4ba171624c9b97696ac5c1122234378"
       url "https://github.com/mfenderov/mark42/releases/download/v#{version}/mark42_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "d616a00da4dde87781d23194fc039ed81a959529e025e6b5c5163242fdbd7edd"
+      sha256 "9a4b06e3fb4da9fbe5e05b50ef87e7fd084c725f79067290504e952109b8914d"
       url "https://github.com/mfenderov/mark42/releases/download/v#{version}/mark42_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "ceb66d6e85ceb24a4b074111b0c28bb6689fbd441bcd9ad7bcc02fa58d7d494b"
+      sha256 "bf46ec3e00123fb1478344243fe4a9f63fe08572ad086931d2c32fd3de9c15aa"
       url "https://github.com/mfenderov/mark42/releases/download/v#{version}/mark42_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "80dd13bdd0648e5397ecfa4a2379a7b062f2cc0b13f206156860713cbd512092"
+      sha256 "02d95df19ca8d817af4bab30eb815b09baa362ded8f47aeafd49d77177be282a"
       url "https://github.com/mfenderov/mark42/releases/download/v#{version}/mark42_#{version}_linux_amd64.tar.gz"
     end
   end
