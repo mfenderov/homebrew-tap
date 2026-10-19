@@ -6,25 +6,25 @@ cask "ocd" do
     end
   end
 
-  version "0.10.1"
+  version "0.11.0"
 
   on_macos do
     on_arm do
-      sha256 "3d790c91d953d2a6c601e3f483e527b67c8d893217528f68b480926ce0269a27"
+      sha256 "7f91cbb7f9bc612402df22facad4868dc6a040abe7f6f9a9917002d6984216e4"
       url "https://github.com/mfenderov/ocd/releases/download/v#{version}/ocd_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "b40ccc9d2d099e13768f9b2a01444ad5fb740b3526e15d4e94c14dfe688f97cb"
+      sha256 "79c938919a4d23e4a2257b8d566a0afa5f4d910e42bdec7cefff3d431ec6ae52"
       url "https://github.com/mfenderov/ocd/releases/download/v#{version}/ocd_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "18c348b6d503a10fe95bdb6a8c8d59c52fab6f9c1fc52def30d34d114a106de7"
+      sha256 "ec5df1546c1c09787c6c22029c97c62d6e20e1b006667305cd785454dca3b2ae"
       url "https://github.com/mfenderov/ocd/releases/download/v#{version}/ocd_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "5adffe2ba6abb1b680e2358cffc4a319112723ab1ff06c1f1fe37a8af6144dbc"
+      sha256 "bd33209b424443358ce6fad62b2f33fe4993be244f71fbb3ccca7aeb48d9e233"
       url "https://github.com/mfenderov/ocd/releases/download/v#{version}/ocd_#{version}_linux_amd64.tar.gz"
     end
   end
