@@ -6,25 +6,25 @@ cask "veronica" do
     end
   end
 
-  version "0.11.0"
+  version "0.11.1"
 
   on_macos do
     on_arm do
-      sha256 "61f90cb70cfcfb8229d228da0c9d2aa3b76bc9c5618f8ba1771370098362e82f"
+      sha256 "d73b73477819b3dd0cc058b631fbbd64837049710029b5edc11ac289ff455975"
       url "https://github.com/mfenderov/veronica/releases/download/v#{version}/veronica_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "304fc8b5e17259098b6a480df4fc36c2ed00d462a80da19c41ec5e238e0e3339"
+      sha256 "9083a287b44bf6cd99b40219cb06c95362fab98d675d5106266d101b02002529"
       url "https://github.com/mfenderov/veronica/releases/download/v#{version}/veronica_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "f0ee394441b654026d2832c9f2fbfacf7fa492be3c2bd39df6e26a386747068d"
+      sha256 "2adb41bf2cb4ad9ba79ab66b7d46f8026228437741a1704c1e43aad202d970a0"
       url "https://github.com/mfenderov/veronica/releases/download/v#{version}/veronica_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "1e49c11a9a3c9c69574983ef5c5873a40fc5b78645f1505e7c1ff736e1b70be8"
+      sha256 "b1f08c1d258aab716cf4ea281044f008ac0b970e2b8e4d192805d3f00d96f596"
       url "https://github.com/mfenderov/veronica/releases/download/v#{version}/veronica_#{version}_linux_amd64.tar.gz"
     end
   end
@@ -39,5 +39,5 @@ cask "veronica" do
 
   binary "veronica"
 
-  # No zap stanza required
+  zap :not_required
 end
